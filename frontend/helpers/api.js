@@ -1,13 +1,13 @@
-export const getStrapiURL = (path = "") => {
+export function getUrl(path = "") {
   return `${
     process.env.NEXT_PUBLIC_STRAPI_API_URL ||
     "http://localhost:1337"
   }${path}`
 }
-async export const fetchAPI = (path) => {
-   const requestURL = getStrapiURL(path)
-   const response = await fetch(requestURL)
-   const data = await response.json()
-   return data;   
-}
 
+export async function fetchAPI(path) {
+  const reqURL = getUrl(path)
+  const res = await fetch(reqURL)
+  const data = await res.json()
+  return data
+}
